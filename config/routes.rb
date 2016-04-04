@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   post "posts", to: "posts#create"
 
   get "posts/:id/edit", to: "posts#edit", as: "posts_edit"
-  patch "posts", to: "posts#update", as: "post"
+  patch "posts/:id/update", to: "posts#update", as: "post"
   get "posts/:id", to: "posts#show", as: "posts_display"
-  delete "posts/:id", to: "posts#delete", as: "posts_delete"
+  delete "posts/:id/delete", to: "posts#delete", as: "posts_delete"
 
   get "logins/new", to: "logins#new", as: "logins"
   get "logins", to: "logins#show", as: "show_login"

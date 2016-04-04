@@ -22,7 +22,7 @@ class LoginsController < ApplicationController
   end
 
   def delete
-    @user = User.destroy(params["id"])
+    session[:user_id] = nil
     redirect_to :root
   end
 end

@@ -9,12 +9,13 @@
   <% @posts.each do |post| %>
     <li class="blog-post"><b>Title:</b> <i><%= post.title %></i>
       <ul>
-      <li><%=link_to("display post ", posts_display_path(post.id)) %></li>
+        <li><%=link_to("display post ", posts_display_path(post.id)) %></li>
       <% if session[:user_id] != nil %>
-      <li><%=link_to("edit post ", posts_edit_path(post.id)) %></li>
-      <li><%=link_to("delete post ", posts_delete_path(post.id)) %></li>
+        <li><%=link_to("edit post ", post_path(post.id)) %></li>
+        <li><%=link_to("delete post ", posts_delete_path(post.id)) %></li>
       <% end %>
     </ul>
     </li>
+  </br>
   <% end %>
 </ul>
