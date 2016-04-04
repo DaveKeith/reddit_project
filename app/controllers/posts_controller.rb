@@ -32,7 +32,8 @@ class PostsController < ApplicationController
   end
 
   def delete
-    @post = Post.destroy(params["id"])
-    render :delete
+    @post = Post.find(params["id"])
+    @post.destroy
+    redirect_to :root
   end
 end

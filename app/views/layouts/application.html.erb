@@ -10,7 +10,7 @@
   <% if session[:user_id] != nil %>
   <nav>
     Hello <%= User.find_by(id: session[:user_id]).username %></br>
-    <%= link_to("Logout", logouts_path(session[:user_id])) %>
+    <%= link_to("Logout", logouts_path(id: session[:user_id])) %>
   </nav>
   <% else %>
   <nav>

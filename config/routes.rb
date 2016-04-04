@@ -21,12 +21,12 @@ Rails.application.routes.draw do
   get "posts/:id/edit", to: "posts#edit", as: "posts_edit"
   patch "posts/:id/update", to: "posts#update", as: "post"
   get "posts/:id", to: "posts#show", as: "posts_display"
-  delete "posts/:id/delete", to: "posts#delete", as: "posts_delete"
+  get "posts/:id/delete", to: "posts#delete", as: "posts_delete"
 
   get "logins/new", to: "logins#new", as: "logins"
   get "logins", to: "logins#show", as: "show_login"
   post "logins", to: "logins#create", as: "create_login"
-  delete "logins", to: "logins#delete", as: "logouts"
+  get "logins/:id/delete", to: "logins#delete", as: "logouts"
 
   get "new_users/new", to: "new_users#new", as: "users_new"
   post "new_users", to: "new_users#create", as: "register_users"
