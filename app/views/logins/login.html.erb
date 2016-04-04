@@ -1,0 +1,18 @@
+<%= link_to("New users sign in here", users_new_path) %>
+
+<h2>Login</h2>
+
+<%= form_tag(create_login_path) do %>
+     <div class="login-field">
+         <%= label_tag("Email:") %>
+         <%= text_field_tag("email") %>
+    </div>
+
+     <div class="login-field">
+         <%= label_tag("Password:") %>
+         <%= password_field_tag("password") %>
+    </div>
+     <%= button_tag("Submit") %>
+<% end %>
+
+<%= link_to("Return to Homepage", root_path) %>

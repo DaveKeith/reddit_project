@@ -1,0 +1,27 @@
+<!-- <form class="new-post" action="/posts" method="post"> -->
+<!-- <div class="post-field"> -->
+<!-- <label>Title: </label> <br/> -->
+<!-- <input type="text" name="title"> -->
+<!-- </div>  -->
+
+<!-- <div class="post-field"> -->
+<!-- <label>Content: </label> <br/> -->
+<!-- <input type="textarea" name="content"> -->
+<!-- </div> -->
+
+<!-- <button type="submit">Create Post!</button> -->
+<!-- </form> -->
+
+<%=  form_tag(posts_path) do %>
+    <div class="post-field">
+        <%= label_tag("Title: ") %> <br/>
+        <%= text_field_tag("title") %>
+    </div>
+
+    <div class="post-field">
+        <%= label_tag("Content: ") %> <br/>
+        <%= text_area_tag("content") %>
+    </div>
+
+    <%= button_tag("Create Post!") %>
+<% end %>

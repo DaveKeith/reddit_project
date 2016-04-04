@@ -1,0 +1,8 @@
+<%=  form_tag(posts_display_path) do %>
+    <div class="post-field">
+        <b><u>title:</b></u>  <%=@post.title %></br>
+        <b><u>content:</b></u>  <%=@post.content %>
+    </div>
+<% end %>
+
+<%= link_to("Return to Homepage", root_path) %>
