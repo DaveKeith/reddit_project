@@ -31,6 +31,13 @@ Rails.application.routes.draw do
   get "new_users/new", to: "new_users#new", as: "users_new"
   post "new_users", to: "new_users#create", as: "register_users"
 
+  resources :posts do
+    resources :comments
+  end
+
+  get "posts/:id", to: "comments#new", as: "new_comments"
+  post "posts/:id", to: "comments#create", as: "post_comments"
+  get "posts/:id", to: "comments#show", as: "comment_display"
   # Example resource route with options:
   #   resources :products do
   #     member do
