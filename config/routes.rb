@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   end
 
   get "posts/:id", to: "comments#new", as: "new_comments"
-  post "posts/:id", to: "comments#create", as: "post_comments"
+  post "posts/:id", to: "comments#create", as: "comment_on_post"
   get "posts/:id", to: "comments#show", as: "comment_display"
   # Example resource route with options:
   #   resources :products do
