@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
   get "posts/new", to: "posts#new", as: "posts_new"
-  post "posts", to: "posts#create"
+  post "posts", to: "posts#create", as: "create_post"
 
   get "posts/:id/edit", to: "posts#edit", as: "posts_edit"
   patch "posts/:id/update", to: "posts#update", as: "post"

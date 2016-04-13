@@ -7,7 +7,7 @@ class LoginsController < ApplicationController
     @user = User.find_by(email: params["email"],
                       password: params["password"])
 
-    if @user
+    if @user 
       session[:user_id] = @user.id
       flash[:notice] = "log in successful!"
       redirect_to :root

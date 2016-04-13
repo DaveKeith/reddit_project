@@ -1,7 +1,6 @@
 <div class="post-field">
   <b><u>title:</b></u>  <%=@post.title %></br>
   <b><u>content:</b></u>  <%=@post.content %>
-  <b><u>votes:</b></u>  <%=@vote.count %>
 </div>
 
 <%= link_to("Return to Homepage", root_path) %></br>
@@ -11,7 +10,9 @@
   <% @post.comments.each do |comment| %>
       <div class="post-comment">
         <li><%= simple_format(comment.body) %></li>
-        <% if comment.user_id == User.ids %>
+          <% binding.pry %>
+
+        <% if comment.user_id == current_user.id %>
         <%= link_to("Update Comment", update_comment_path(@post.id)) %></br>
         <%= link_to("Delete Comment", delete_comment_path(@post.id)) %>
         <% end %>
@@ -19,7 +20,6 @@
   <% end %>
 </div>
 </br>
-<% if session[:user_id] != nil %>
   <%=  form_tag(post_comments_path(@post.id)) do %>
       <div class="post-field">
           <b><%= label_tag("Write Comment Here: ") %></b> <br/>
@@ -28,4 +28,3 @@
 
       <%= button_tag("Post Comment!") %>
   <% end %>
-<% end %>
