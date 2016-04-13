@@ -8,8 +8,11 @@
 <ul class="posts">
   <% @posts.each do |post| %>
     <li class="blog-post"><b>Title:</b> <i><%= post.title %></i>
+    </br><b>Content:</b> <i><%= post.content %></i>
       <ul>
-        <li><%=link_to("display post ", posts_display_path(post.id)) %></li>
+        </br><b>Options:</b>
+        <li><%=link_to("display post (lets you view and make comments)",
+        posts_display_path(post.id)) %></li>
       <% if session[:user_id] != nil %>
         <li><%=link_to("edit post ", post_path(post.id)) %></li>
         <li><%=link_to("delete post ", posts_delete_path(post.id)) %></li>

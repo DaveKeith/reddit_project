@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    # @user = User.find(params["user_id"])
     new_post = Post.create(title: params["title"],
                            content: params["content"])
     redirect_to :root
@@ -33,6 +34,10 @@ class PostsController < ApplicationController
 
   def delete
     @post = Post.find(params["id"])
+    comments = Comment.where(post_id: @post.id)
+    comments.each do |comment|
+      comment.destroy
+    end
     @post.destroy
     redirect_to :root
   end

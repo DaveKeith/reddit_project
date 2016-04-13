@@ -37,7 +37,9 @@ Rails.application.routes.draw do
 
   get "posts/:id", to: "comments#new", as: "new_comments"
   post "posts/:id", to: "comments#create", as: "comment_on_post"
-  get "posts/:id", to: "comments#show", as: "comment_display"
+  get "posts/:id/edit", to: "comments#edit", as: "comments_edit"
+  patch "posts/:id/update", to: "comments#update", as: "update_comment"
+  get "posts/:id/delete", to: "comments#delete", as: "delete_comment"
   # Example resource route with options:
   #   resources :products do
   #     member do
