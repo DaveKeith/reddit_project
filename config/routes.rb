@@ -31,15 +31,10 @@ Rails.application.routes.draw do
   get "new_users/new", to: "new_users#new", as: "users_new"
   post "new_users", to: "new_users#create", as: "register_users"
 
-  resources :posts do
-    resources :comments
-  end
-
   get "posts/:id", to: "comments#new", as: "new_comments"
   post "posts/:id", to: "comments#create", as: "comment_on_post"
   get "posts/:id/edit", to: "comments#edit", as: "comments_edit"
-  patch "posts/:id/update", to: "comments#update", as: "update_comment"
-  get "posts/:id/delete", to: "comments#delete", as: "delete_comment"
+  get "comments/:id/delete", to: "comments#delete", as: "delete_comment"
   # Example resource route with options:
   #   resources :products do
   #     member do

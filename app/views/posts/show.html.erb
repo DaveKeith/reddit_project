@@ -1,26 +1,42 @@
-<div class="post-field">
-  <b><u>title:</b></u>  <%=@post.title %></br>
-  <b><u>content:</b></u>  <%=@post.content %>
+<div class="top_left_link">
+  <%= link_to("Return to Homepage", root_path) %>
 </div>
 
-<%= link_to("Return to Homepage", root_path) %></br>
+<div class="poster2">
+  <% poster= User.find_by(id: @post.user_id) %>
+  Posted by: <%= poster.username %>
+</div>
 
-<h4>Comments:</h4>
+<div class="card-panel blue">
+  <span class="white-text">
+    <b><u>title:</b></u>  <%=@post.title %></br>
+    <b><u>content:</b></u>  <%=@post.content %>
+  </span>
+</div>
+
+<div class="comments_intro">
+  Comments:
+</div>
+
 <div class="comments">
   <% @post.comments.each do |comment| %>
-      <div class="post-comment">
-        <li><%= simple_format(comment.body) %></li>
-          <% binding.pry %>
-
-        <% if comment.user_id == current_user.id %>
-        <%= link_to("Update Comment", update_comment_path(@post.id)) %></br>
-        <%= link_to("Delete Comment", delete_comment_path(@post.id)) %>
-        <% end %>
+      <div class="card">
+        <span class="card-title">
+          <%= comment.body %>
+        </span>
+          <p><i>comment posted by:  </i>
+            <% poster= User.find_by(id: comment.user_id) %>
+          <b><%= poster.username %></b>
+          <% if comment.user_id == current_user.id %>
+          <div class="card-action">
+            <%= link_to("Delete Comment", delete_comment_path(comment.id)) %>
+          </div>
+          <% end %>
       </div>
   <% end %>
 </div>
 </br>
-  <%=  form_tag(post_comments_path(@post.id)) do %>
+  <%=  form_tag(comment_on_post_path(@post.id)) do %>
       <div class="post-field">
           <b><%= label_tag("Write Comment Here: ") %></b> <br/>
           <%= text_area_tag("body") %>

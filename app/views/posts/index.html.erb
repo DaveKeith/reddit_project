@@ -1,24 +1,41 @@
-<% if session[:user_id] != nil %>
-<%= link_to("Add a New Post!", posts_new_path) %>
-<% end %>
+<div class="top_left_link">
+  <% if session[:user_id] != nil %>
+    <%= link_to("Add a New Post!", posts_new_path) %>
+  <% end %>
+</div>
 
+<div class="title_div">
+  BLOG POSTINGS
+</div>
 
-<h1>ALL OF THE BLOG POSTINGS</h1>
-
-<ul class="posts">
+<ul class="collapsible" data-collapsible="accordion">
   <% @posts.each do |post| %>
-    <li class="blog-post"><b>Title:</b> <i><%= post.title %></i>
-    </br><b>Content:</b> <i><%= post.content %></i>
-      <ul>
-        </br><b>Options:</b>
-        <li><%=link_to("display post (lets you view and make comments)",
-        posts_display_path(post.id)) %></li>
-      <% if session[:user_id] != nil %>
-        <li><%=link_to("edit post ", post_path(post.id)) %></li>
-        <li><%=link_to("delete post ", posts_delete_path(post.id)) %></li>
-      <% end %>
-    </ul>
-    </li>
-  </br>
+        <li>
+          <div class="collapsible-header">
+            <b>Title:</b> <%= post.title %>
+            <div class="poster">
+              <% poster= User.find_by(id: post.user_id) %>
+              Posted by: <%= poster.username %>
+            </div>
+          </div>
+          <div class="collapsible-body">
+            <div class="content_title">
+              <b>Content:</b>
+            </div>
+            <div class="content_body">
+              <i><%= post.content %></i>
+            </div>
+            <div class="options_title">
+              <b>Options:</b>
+            </div>
+            <ul class="options">
+              <li><%=link_to("display post (lets you view and make comments)",
+            posts_display_path(post.id)) %></li>
+              <% if session[:user_id] == post.user_id %>
+              <li><%=link_to("edit post ", post_path(post.id)) %></li>
+              <li><%=link_to("delete post ", posts_delete_path(post.id)) %></li>
+              <% end %>
+          </ul>
+        </li>
   <% end %>
 </ul>

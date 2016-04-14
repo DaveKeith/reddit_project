@@ -12,18 +12,22 @@
 <!-- <button type="submit">Create Post!</button> -->
 <!-- </form> -->
 
-<%=  form_tag(posts_path) do %>
-    <div class="post-field">
-        <%= label_tag("Title: ") %> <br/>
-        <%= text_field_tag("title") %>
-    </div>
+<div class="side_padding_div">
+  <%=  form_tag(create_post_path) do %>
+      <div class="post-field">
+          <%= label_tag("Title: ") %> <br/>
+          <%= text_field_tag("title") %>
+      </div>
 
-    <div class="post-field">
-        <%= label_tag("Content: ") %> <br/>
-        <%= text_area_tag("content") %>
-    </div>
+      <div class="post-field">
+          <%= label_tag("Content: ") %> <br/>
+          <%= text_area_tag("content") %>
+      </div>
 
-    <%= button_tag("Create Post!")%>
-<% end %>
+      <button class="btn waves-effect waves-light" type="submit" name="action">
+        Create Post
+      </button>
+  <% end %>
 
-<%= link_to("Return to Homepage", root_path) %>
+  <%= link_to("Return to Homepage", root_path) %>
+</div>

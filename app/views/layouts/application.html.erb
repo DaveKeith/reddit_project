@@ -9,12 +9,25 @@
 <body>
   <% if session[:user_id] != nil %>
   <nav>
-    Hello <%= User.find_by(id: session[:user_id]).username %></br>
-    <%= link_to("Logout", logouts_path(id: session[:user_id])) %>
+    <div class="left nav-wrapper">
+      <div class="side_padding_div">
+        Hello <%= User.find_by(id: session[:user_id]).username %>
+      </div>
+    </div>
+    </div>
+    <div class="right nav-wrapper">
+      <div class="side_padding_div">
+        <%= link_to("Logout", logouts_path(id: session[:user_id])) %>
+      </div>
+    </div>
   </nav>
   <% else %>
   <nav>
-    <%= link_to("Sign In Here", logins_path) %>
+    <div class="right nav-wrapper">
+      <div class="side_padding_div">
+        <%= link_to("Sign In Here", logins_path) %>
+      </div>
+    </div>
   </nav>
   <% end %>
 

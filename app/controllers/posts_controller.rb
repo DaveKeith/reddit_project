@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    new_post = Post.create(title: params["title"],
+    new_post = current_user.posts.create(title: params["title"],
                            content: params["content"])
     redirect_to :root
   end
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = current_user.posts.find(params["id"])
+    @post = Post.find(params["id"])
     @post.update(title: params["title"],
                 content: params["content"])
     redirect_to :root
