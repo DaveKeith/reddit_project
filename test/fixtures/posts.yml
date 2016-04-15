@@ -1,13 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  content: MyText
-  format: MyString
-  written_at: 2016-03-31 16:31:47
-
-two:
-  title: MyString
-  content: MyText
-  format: MyString
-  written_at: 2016-03-31 16:31:47
+google:
+  title: I found this amazing search engine...
+  content: google.com
+  user: brit

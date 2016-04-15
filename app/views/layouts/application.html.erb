@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if session[:user_id] != nil %>
+  <% if current_user %>
   <nav>
     <div class="left nav-wrapper">
       <div class="side_padding_div">

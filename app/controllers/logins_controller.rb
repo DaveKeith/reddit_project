@@ -4,12 +4,10 @@ class LoginsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params["email"],
-                      password: params["password"])
+    @user = User.find_by(email: params["email"])
 
-    if @user 
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:notice] = "log in successful!"
       redirect_to :root
     else
       flash[:notice] = "Wrong email and/or password."

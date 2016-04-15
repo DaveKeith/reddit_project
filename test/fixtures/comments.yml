@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  body: MyString
-
-two:
-  body: MyString
+my_comment:
+  body: I am a comment
+  user: brit
+  post: google

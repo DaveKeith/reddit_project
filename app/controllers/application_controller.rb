@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     if user_id
       User.find_by(id: user_id)
     end
-  #    user_id && User.find_by(id: user_id)
   end
 
   def authenticate!
