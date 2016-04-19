@@ -9,26 +9,19 @@
     BLOG POSTINGS
   </div>
 
-  <ul class="collapsible" data-collapsible="accordion">
     <% @posts.each do |post| %>
-          <li>
-            <div class="collapsible-header">
+          <div class="card">
+            <span class="card-title">
               <b>Title:</b> <%= post.title %>
               <div class="poster">
                 <% poster= User.find_by(id: post.user_id) %>
                 posted by <b><u><%= poster.username %></u></b>
                 <%= time_ago_in_words(post.updated_at) %> ago
               </div>
-            </div>
-            <div class="collapsible-body">
+            </span>
               <div class="content_title">
                 <b>Content:</b>
-              </div>
-              <div class="content_body">
                 <i><%= post.content %></i>
-              </div>
-              <div class="options_title">
-                <b>Options:</b>
               </div>
               <ul class="options">
                 <li><%=link_to("display post (lets you view and make comments)",
@@ -38,9 +31,9 @@
                 <li><%=link_to("delete post ", posts_delete_path(post.id)) %></li>
                 <% end %>
             </ul>
-          </li>
+          </div>
     <% end %>
   </ul>
 </div>
-<% scope = Post.all.page(params[:page]) %>
+<% scope = Post.all.page(params[:page]).per(10) %>
   <%= paginate(scope) %>
